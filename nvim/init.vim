@@ -1,118 +1,344 @@
-" Plugins
-call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
-    Plug 'chrisbra/csv.vim'
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'moll/vim-bbye'
-    Plug 'simeji/winresizer'
-    Plug 'junegunn/fzf.vim'
-    Plug 'junegunn/limelight.vim'
-    Plug 'itchyny/lightline.vim'
-    Plug 'simnalamburt/vim-mundo'
-    Plug 'rust-lang/rust.vim'
-    Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
-call plug#end()
+if !1 | finish | endif
 
-set clipboard+=unnamedplus
-set splitbelow splitright
-set number relativenumber nowrap
-set spell spelllang=en_us
+" Declare group for autocmd for whole init.vim, and clear it
+" Otherwise every autocmd will be added to group each time vimrc sourced!
+augroup vimrc
+    autocmd!
+augroup END
 
-" set background=dark
+" +------------+
+" | leader key |
+" +------------+
 
-au ColorScheme * hi Normal ctermbg=none guibg=none
+" Configure leader key
+let mapleader = "\<space>"
+let maplocalleader = "\<space>"
 
-" added for rust plugin
-syntax enable
-filetype plugin indent on
+" +----------------+
+" | install plugin |
+" +----------------+
 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
+" Source plugin definition file
+source $VIMCONFIG/init_plugins.vim
 
-"Remap splits navigation to just CTRL-hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" Load custom library for lua
+lua require('hypnos/kit')
+lua require('hypnos/status_line')
+lua require('hypnos/tab_line')
+lua require('hypnos/text_objects').basic_text_objects()
+lua require('hypnos/text_objects').indent_text_objects()
 
-" reminder: leader is "\" so \tt gives a new terminal
-nnoremap <Leader>tt :vnew term://zsh<CR>
-nnoremap <Leader>pv :set nosplitright<bar> :vsp<bar> :Ex<bar> :vertical resize 30<bar> :set splitright<CR>
-nnoremap <C-p> :GFiles<CR>
-nnoremap <Leader>pf :Files<CR>
-nnoremap <Leader><CR> :so ~/dotfiles/nvim/init.vim<CR>
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
+" source every plugin configs
+for file in split(glob('$VIMCONFIG/pluggedconf/*.nvimrc'), '\n')
+    execute 'source' file
+endfor
 
-" Change 2 split windows from vert to horiz or horiz to vert 
-nnoremap <Leader>th <C-w>t<C-w>H 
-nnoremap <Leader>tk <C-w>t<C-w>K 
+" +------------------+
+" | global variables |
+" +------------------+
 
-" Removes pipes | that act as seperators on splits 
-set fillchars+=vert:\
+" Disable fold in markdown
+let g:vim_markdown_folding_disabled = 1
 
+" New and fast way for detecting filetype
+let g:do_filetype_lua = 1
+let g:did_load_filetypes = 0
+
+" Lua syntax highlighting in Vimscript (*.vim) files
+let g:vimsyn_embed = 'l;'
+
+let g:markdown_fenced_languages = ['html', 'python', 'lua', 'vim', 'typescript', 'javascript']
+
+" +-----------------+
+" | general mapping |
+" +-----------------+
+
+" Create box and figlet - ESSENTIAL :D
+vmap <F2> !boxes -d stone<cr>
+vmap <f3> !figlet<cr>
+
+" un-highlight when esc is pressed
+nnoremap <silent> <c-c> <Cmd>nohlsearch<cr>
+
+" indent without killing the selection in VISUAL mode
+" vmap < <gv
+" vmap > >gv
+
+inoremap <C-d> <Del>
+
+" location & quickfix
+nnoremap <silent> <leader>l :call general#ToggleList("Location List", 'l')<CR>
+nnoremap <silent> <leader>q :call general#ToggleList("Quickfix List", 'c')<CR>
+nnoremap <leader>j :cnext<CR>
+nnoremap <leader>k :cprevious<CR>
+nnoremap <leader>lj :lnext<CR>
+nnoremap <leader>lk :lprevious<CR>
+
+" close the current buffer and switch to alternate buffer
+nnoremap <silent> <leader>dd <cmd>bp <bar>bd! #<cr>
+
+" open relative paths under cursor with xdg-open (example: './my/relative/file.pdf')
+nnoremap <silent> gX :execute "!xdg-open" expand('%:p:h') . "/" . expand("<cfile>") " &"<cr>
+
+" open current file using xdg-open
+nnoremap <leader>x :silent :execute "!xdg-open %"<CR>
+
+" Go to file even if doesn't exist
+nnoremap gF :e <cfile><CR>
+
+" Actually change the directory to the current file
+command CDC cd %:p:h
+
+"toggle between absolute -> relative line number
+" nnoremap <C-n> :let [&nu, &rnu] = [&nu, &nu+&rnu==1]<CR>
+nnoremap <C-n> :set relativenumber! <CR>
+
+" tabs
+nnoremap th :tabfirst<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tl :tablast<CR>
+nnoremap tn :tabnew<CR>
+nnoremap tc :tabclose<CR>
+
+" move tab to first position
+nnoremap tH :tabm 0<CR>
+nnoremap tL :tabm<CR>
+
+" create horizontal window
+nnoremap <c-w>h <c-w>s
+
+" Multi OS version (open for macOS)
+" command -nargs=? DevDocs call system('type -p open >/dev/null 2>&1 && open https://devdocs.io/#q=<args> || xdg-open https://devdocs.io/#q=<args>')
+" Only Linux
+command! -nargs=? DevDocs call system('xdg-open https://devdocs.io/#q=<args>')
+autocmd vimrc FileType python,ruby,rspec,javascript,go,html,php nnoremap <buffer><leader>D :execute "DevDocs " . expand('<cword>')<CR>
+
+" arrow keys resize windows
+nnoremap <left> :vertical resize -10<cr>
+nnoremap <right> :vertical resize +10<cr>
+nnoremap <up> :resize -10<cr>
+nnoremap <down> :resize +10<cr>
+
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
+
+" Quit neovim terminal
+tnoremap <C-q> <C-\><C-n>
+
+" edit vimrc with f5 and source it with f6
+nnoremap <silent> <leader><f5> :vsplit $MYVIMRC<CR>
+nnoremap <silent> <leader><f6> :source $MYVIMRC<CR>
+
+" Simple Zoom / Restore window (like Tmux)
+nnoremap <silent> <leader>z :call general#ZoomToggle()<CR>
+
+" Execute a macro for the all selection
+xnoremap @ :<C-u>call general#ExecuteMacroOverVisualRange()<CR>
+
+" Paste from the yank buffer
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+
+" Surround with s (I never use the NORMAL substitute command)
+nmap s ys
+
+" Save session
+nnoremap <leader>ss :mksession! $VIMCONFIG/sessions/
+" Reload session
+nnoremap <leader>sl :source $VIMCONFIG/sessions/
+" Source sets of macros
+nnoremap <leader>ml :source $VIMCONFIG/macros/
+
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+nnoremap <leader>g :file<cr>
+
+" +---------------+
+" | User Commands |
+" +---------------+
+
+" buffer cleanup - delete every buffer except the one open
+command! Ball :silent call general#Bdeleteonly()
+
+" Add a journal entry
+command! Jrnl call general#MakeJournalEntry()
+
+" romainl redir (https://gist.github.com/romainl/eae0a260ab9c135390c30cd370c20cd7)
+command! -nargs=1 -complete=command -bar -range Redir silent call general#Redir(<q-args>, <range>, <line1>, <line2>)
+
+command! -nargs=1 -complete=command LimitChar silent call matchadd('MaxLineChar', '\%' . <q-args> . 'v')
+
+" +---------+
+" | autocmd |
+" +---------+
+
+" restore the position of the last cursor when you open a file
+autocmd vimrc BufReadPost * call general#RestorePosition()
+
+" delete trailing space when saving files
+autocmd vimrc BufWrite *.php,*.js,*.jsx,*.vue,*.twig,*.html,*.sh,*.yaml,*.yml,*.clj,*.cljs,*.cljc,*.vim,*.lua,*.md call general#DeleteTrailingWS()
+
+" Open files with external application
+autocmd vimrc BufEnter *.png,*.jpg,*.gif silent! execute "! sxiv ".expand("%") | bwipeout
+autocmd vimrc BufEnter *.pdf silent! execute "! zathura ".expand("%") "&" | bwipeout
+
+" Toggle relative number
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" Formatting options (:help fo-table)
+autocmd vimrc FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Automatically source vimrc after saving
+" autocmd vimrc bufwritepost init.vim source $MYVIMRC
+
+" +--------------+
+" | Highlighting |
+" +--------------+
+
+" highlight the line which is longer than the defined margin (80 character)
+autocmd vimrc FileType php,js,vue,go,sh,md call matchadd('MaxLineChar', '\%80v', 10)
+autocmd vimrc FileType vim call matchadd('MaxLineChar', '\%120v', 100)
+
+" Highlight briefly yanked text
+au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=300}
+
+" +---------------+
+" | Abbreviations |
+" +---------------+
+
+" Some abbreviations finish with _ because it's not often that an underscore is followed by a space
+
+" from `:help abbreviations`
+func Delchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunc
+
+iabbrev IMO in my opinion
+iabbrev BTW by the way
+
+" Typos
+iabbrev hte the
+iabbrev teh the
+iabbrev authros authors
+iabbrev authro author
+iabbrev proejct project
+iabbrev direcotry directory
+iabbrev direcotries directories
+iabbrev trhe the
+iabbrev insteand instead
+iabbrev solutiosn solutions
+iabbrev documenation documentation
+iabbrev itslef itself
+iabbrev hisotry history
+iabbrev frist first
+
+" Date
+iabbrev <expr> date_ strftime('%Y-%m-%d')
+
+" Useful for writing the book Learning to Play Vim
+iabbrev cur_ ж\cur{}ж<left><left><c-r>=Delchar('\s')<cr>
+iabbrev mne_ []{.mne}<Esc>F[a<c-r>=Delchar('\s')<cr>
+iabbrev sc_ []{.smallcaps}<Esc>F[a<c-r>=Delchar('\s')<cr>
+
+" +-------+
+" | netrw |
+" +-------+
+
+command! Oexplore exe 'Vexplore' getcwd()
+
+" Open on the left
+nnoremap <leader>v :Vexplore<cr>
+nnoremap <leader>V :Oexplore<cr>
+
+" +--------------+
+" | Set  options |
+" +--------------+
+
+" colorscheme
+colorscheme hypnos
+
+" no swap file
 set noswapfile
+" set the directory where the swap file will be saved
+set backupdir=$VIMCONFIG/backup
+set directory=$VIMCONFIG/swap
 
 " save undo trees in files
 set undofile
-set undodir=$HOME/.config/nvim/undo
+set undodir=$VIMCONFIG/undo
 
 " number of undo saved
-set undolevels=10000
-set undoreload=10000
+set undolevels=10000 " How many undos
+set undoreload=10000 " number of lines to save for undo
 
-" use 4 spaces instead of tab ()
+" set line number
+" set number
+
+" the copy goes to the clipboard
+set clipboard+=unnamedplus
+
+" use 4 spaces instead of tab (to replace existing tab use :retab)
 " copy indent from current line when starting a new line
-
 set autoindent
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set hidden
-set wildmenu
-set path +=**
 
-" Show substitution
+" when at 3 spaces, and I hit > ... indent of 4 spaces in total, not 7
+set shiftround
+
+" Use case insensitive search, except when using capital letters
+set ignorecase
+set smartcase
+
+" set list
+set list listchars=tab:\┆\ ,trail:·,nbsp:±
+
+" doesn't prompt a warning when opening a file and the current file was modified but not saved
+set hidden
+
+" avoid delay
+" redir doesn't work anymore with that...
+" set updatetime=300
+
+" always show signcolumns
+set signcolumn=yes
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" Folds
+" set foldlevelstart=999 " Start with all folds open
+set foldtext=general#FoldText()
+
+" Show the substitution LIVE
 set inccommand=nosplit
 
-nnoremap <space> <nop>
-let mapleader = "\<space>"
+" Better ex autocompletion
+" set wildmenu
+" set wildmode=list:longest,full
 
-nnoremap <leader>bn :bn<cr> ;buffer next
-nnoremap <leader>tn gt ;new tab
+" relative / hybrid line number switch
+set number relativenumber
 
-" Config for chrisbra/csv.vim
-augroup filetype_csv
-    autocmd! 
+" for vertical pane in git diff tool
+set diffopt+=vertical
 
-    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
-    autocmd BufWritePre *.csv :%UnArrangeColumn
-augroup END
+" to be able to use find in any projects
+set path=.,**,,
 
-" Config for fzf.vim (BONUS :D)
-nnoremap <leader>f :Files<cr>
-nnoremap <leader>h :History<cr>
-nnoremap <leader><space> :Rg<cr>
+" Don't display preview window for omni-completion
+:set completeopt-=preview
 
-" added for mutt and text_flowed
-setl tw=72
-setl fo=watqc
-setl nojs
-setl nosmartindent
-setl list
-"set listchars=trail:*
-
-highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
-highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
-highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
-highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
-highlight IncSearch  cterm=BOLD ctermfg=NONE ctermbg=23
-
-set termguicolors | "Use the right colors
-colorscheme nightfly
-let g:lightline = { 'colorscheme' : 'nightfly'}
-let g:nightflyCursorColor = 1
-let g:nightflyUnderlineMatchParen = 1
+" Set ripgrep for grep program
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --smart-case
+endif
