@@ -1,0 +1,16 @@
+---
+projects:
+  - name: MY SUPER COOL PROJECT
+    services:
+      monitor:
+        address: "https://thevaluable.dev"
+    widgets:
+      - row:
+          - col:
+              size: "M"
+              elements:
+                - name: mon.box_availability
+                  options:
+                    title: " MY SUPER TITLE "
+                    border_color: green
+                    color: red
