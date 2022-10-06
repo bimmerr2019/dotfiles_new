@@ -14,9 +14,6 @@ if [ ! -d "$VIMCONFIG" ]
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-# From Cloud
-ln -sf "$DOTFILES_CLOUD/projects.nvimrc" "$VIMCONFIG"
-
 # crreate vim sessions and macros folder
 mkdir -p "$VIMCONFIG/sessions"
 

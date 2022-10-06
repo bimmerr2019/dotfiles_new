@@ -11,7 +11,7 @@
 source ./install_config
 source ./colors.sh
 source ./install_functions.sh
-source ./zsh/zshenv
+source ./zsh/.zshenv
 
 ################
 # presentation #
@@ -60,6 +60,8 @@ dot_is_installed nvim && dot_install nvim
 dot_is_installed tmux && dot_install tmux
 dot_is_installed dunst && dot_install dunst
 dot_is_installed feh && dot_install feh
+dot_is_installed ranger && dot_install ranger
+dot_is_installed mutt && dot_install mutt
 #dot_is_installed mycli && dot_install mycli
 #dot_is_installed pgcli && dot_install pgcli
 #dot_is_installed go && dot_install_func go install_go_binaries

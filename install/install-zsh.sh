@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-mkdir -p "$ZDOTDIR"
 
-ln -sf "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
-ln -sf "$DOTFILES/zsh/zshrc" "$ZDOTDIR/.zshrc"
-
-ln -sf "$DOTFILES/zsh/dircolors" "$ZDOTDIR/dircolors"
-
+mkdir -p "$XDG_CONFIG_HOME/zsh"
+ln -sf "$DOTFILES/zsh/.zshenv" "$HOME"
+ln -sf "$DOTFILES/zsh/.zshrc" "$XDG_CONFIG_HOME/zsh"
+ln -sf "$DOTFILES/zsh/aliases" "$XDG_CONFIG_HOME/zsh/aliases"
+rm -rf "$XDG_CONFIG_HOME/zsh/external"
+ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh"
