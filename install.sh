@@ -53,7 +53,7 @@ fi
 . "$DOTFILES/install/install-X11.sh"
 
 #dot_is_installed git && dot_install projects
-dot_is_installed lxappearance && dot_install theme
+#dot_is_installed lxappearance && dot_install theme
 dot_is_installed i3 && dot_install i3
 #dot_is_installed git && dot_install git
 dot_is_installed nvim && dot_install nvim
@@ -67,23 +67,22 @@ dot_is_installed mutt && dot_install mutt
 #dot_is_installed go && dot_install_func go install_go_binaries
 #dot_is_installed joplin && dot_install joplin
 #dot_is_installed vifm && dot_install vifm
-#dot_is_installed clojure && dot_install clojure dot_is_installed 
-#freemind && dot_install freemind
+#dot_is_installed clojure && dot_install clojure dot_is_installed freemind && dot_install freemind
 #dot_is_installed redshift && dot_install redshift
 #dot_is_installed gimp && dot_install gimp
 dot_is_installed zathura && dot_install zathura
 #dot_is_installed doublecmd && dot_install doublecmd
 #dot_is_installed deadbeef && dot_install deadbeef
-dot_is_installed darktable && dot_install darktable
+#dot_is_installed darktable && dot_install darktable
 #dot_is_installed digikam && dot_install digikam
 dot_is_installed newsboat && dot_install newsboat
-dot_is_installed taskell && dot_install taskell
+#dot_is_installed taskell && dot_install taskell
 #dot_is_installed devdash && dot_install devdash
-dot_is_installed php && dot_install php
-dot_is_installed kitty && dot_install kitty
-dot_is_installed sxiv && dot_install sxiv
+#dot_is_installed php && dot_install php
+#dot_is_installed kitty && dot_install kitty
+#dot_is_installed sxiv && dot_install sxiv
 #dot_is_installed litecli && dot_install litecli
 #dot_is_installed thunderbird && dot_install thunderbird
 
-dot_install gtk
+#dot_install gtk
 #dot_install default-app
