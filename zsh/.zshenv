@@ -4,7 +4,7 @@
 # EXPORT ENVIRONMENT VARIABLE #
 ###############################
 
-export TERM='rxvt-256color'
+#export TERM='rxvt-256color'
 export DOTFILES="$HOME/dotfiles"
 export WORKSPACE="$HOME/workspace"
 export VIMRC="$HOME/dotfiles/nvim/init.vim"
