@@ -82,10 +82,10 @@ bindkey -s '^g' 'clear\n'
 
 # keep this line at bottom
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^ ' autosuggest-accept
 
 source $DOTFILES/zsh/zsh-z/zsh-z.plugin.zsh
+source $DOTFILES/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 #eval "$(dircolors $HOME/.dircolors)";
 
