@@ -11,6 +11,7 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'rust-lang/rust.vim'
     Plug 'bluz71/vim-nightfly-guicolors'
     Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
+    Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 set clipboard+=unnamedplus
@@ -105,14 +106,13 @@ setl nosmartindent
 setl list
 "set listchars=trail:*
 
-highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
-highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
-highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
-highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
-highlight IncSearch  cterm=BOLD ctermfg=NONE ctermbg=23
-
 set termguicolors | "Use the right colors
 colorscheme nightfly
 let g:lightline = { 'colorscheme' : 'nightfly'}
 let g:nightflyCursorColor = 1
 let g:nightflyUnderlineMatchParen = 1
+
+" Diff in Neovim needs a bit of adjustment for readability
+highlight DiffAdd  guibg=#222222
+highlight DiffText guibg=#000000
+
