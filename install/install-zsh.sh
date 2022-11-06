@@ -18,3 +18,6 @@ mkdir -p "$HOME/zsh_play"
 [ ! -d "$HOME/zsh_play/zsh-z" ] \
 && git clone https://github.com/agkozak/zsh-z \
 "$HOME/zsh_play/zsh-z"
+[ ! -d "$HOME/QTodoTxt2" ] \
+&& git clone https://github.com/QTodoTxt/QTodoTxt2 \
+"$HOME/QTodoTxt2"
