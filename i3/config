@@ -10,11 +10,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Inconsolata NF 12
+font pango:Inconsolata NF Medium 12
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -154,6 +154,7 @@ workspace_auto_back_and_forth yes
 
 # xprop | grep WM_CLASS
 assign [class="firefox" instance="Navigator"] $ws2
+assign [class="Brave-browser" instance="brave-browser"] $ws2
 assign [class="Yubico Authenticator" instance="yubioath-desktop"] $ws2
 assign [class="KeePassXC" instance="keepassxc"] $ws6
 assign [class="Element" instance="element"] $ws3
@@ -290,12 +291,12 @@ client.placeholder 	#000000 #0c0c0c $white2 #000000 0c0c0c
 
 for_window [class="URxvt*"] border pixel 1
 
-exec urxvt
-exec firefox
-exec signal-desktop
-exec element-desktop
-exec zathura ~/Nextcloud/mouseless/building_mouseless_environment.pdf
-exec nextcloud
+exec --no-startup-id urxvt
+exec --no-startup-id brave
+exec --no-startup-id signal-desktop
+exec --no-startup-id element-desktop
+exec --no-startup-id zathura ~/Nextcloud/mouseless/building_mouseless_environment.pdf
+exec --no-startup-id nextcloud
 
 # Terminal scratchpad with tmux and three windows: 1. Terminal | 2.Neovim temp file
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border none
@@ -311,14 +312,21 @@ bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
 exec urxvtc -name htop_scratchpad -e htop
 
 # i3bar
+# to change the bar font uncomment and place at top. then MOD+SHIFT+R
 bar {
 	status_command /usr/bin/bumblebee-status \
         -m disk memory nic pasink pasource battery datetime \
-		-p disk.path=/home datetime.format="%a, %b %d, %Y at %I:%M %p" \
-        -t gruvbox-powerline-light \
-#		-t solarized-powerline
+        -p disk.path=/home datetime.format="%a, %b %d, %Y at %I:%M:%S %p" \
+        -t dracula-powerline \
+#        -t iceberg-contrast \
+#        -t iceberg-rainbow \
+#        -t nord-powerline \
+#        -t greyish-powerline \
+#        -t solarized-powerline \
+#        -t gruvbox-powerline \
+#        -t powerline \
+#        -t gruvbox-powerline-light \
 #        position top
-#        font pango:Inconsolata NF 14
 }
 set $mode_display Config monitor resolution - Default config (d)
 

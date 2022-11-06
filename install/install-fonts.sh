@@ -6,5 +6,5 @@
 # Fonts #
 #########
 
-mkdir -p "$XDG_DATA_HOME"
-cp -rf "$DOTFILES/fonts" "$XDG_DATA_HOME"
+mkdir -p "$HOME/.fonts"
+cp -rf "$DOTFILES/fonts" "$HOME/.fonts"
