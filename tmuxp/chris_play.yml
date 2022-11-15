@@ -1,6 +1,6 @@
 # This file should be in "$XDG_CONFIG_HOME/tmuxp/dotfiles.yml"
 
-session_name: chris
+session_name: chris_play
 start_directory: $HOME
 
 windows:

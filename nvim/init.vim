@@ -38,12 +38,22 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"Remap tabs navigation
+nnoremap <C-n>  :tabn<cr>
+nnoremap <C-t>  :tabnew<cr>
+nnoremap <C-x>  :tabc<cr>
+
+"Ctrl-C and Ctrl-V for copy and paste to clipboard:
+"vnoremap <C-c> "*y :let @+=@*<CR>
+"map <C-v> "+P
+
 " reminder: leader is "\" so \tt gives a new terminal
 nnoremap <Leader>tt :vnew term://zsh<CR>
 nnoremap <Leader>pv :set nosplitright<bar> :vsp<bar> :Ex<bar> :vertical resize 30<bar> :set splitright<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader><CR> :so ~/dotfiles/nvim/init.vim<CR>
+nnoremap <Leader>v :e ~/dotfiles/nvim/init.vim<CR>
 nnoremap <Leader>+ :vertical resize +5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 
@@ -84,6 +94,8 @@ let mapleader = "\<space>"
 
 nnoremap <leader>bn :bn<cr> ;buffer next
 nnoremap <leader>tn gt ;new tab
+"following doesnt work, but if you type in directly it works
+"nnoremap <leader>ss :g/^\s*$/d<cr> ;remove blank lines
 
 " Config for chrisbra/csv.vim
 augroup filetype_csv
@@ -101,7 +113,7 @@ nnoremap <leader>f :Files<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader><space> :Rg<cr>
 
-" un-highlight when esc is pressed
+" un-highlight when Ctrl-C is pressed
 nnoremap <silent> <c-c> <Cmd>nohlsearch<cr>
 
 " added for mutt and text_flowed
@@ -113,12 +125,13 @@ setl list
 "set listchars=trail:*
 
 set termguicolors | "Use the right colors
-colorscheme nightfly
+colorscheme desert
+"colorscheme nightfly
 let g:lightline = { 'colorscheme' : 'nightfly'}
 let g:nightflyCursorColor = 1
 let g:nightflyUnderlineMatchParen = 1
 
 " Diff in Neovim needs a bit of adjustment for readability
-highlight DiffAdd  guibg=#222222
-highlight DiffText guibg=#000000
+highlight DiffAdd  guibg=#B23456
+highlight DiffText guibg=#654321
 

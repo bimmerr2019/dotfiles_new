@@ -1,0 +1,30 @@
+session_name: chris
+windows:
+- focus: 'true'
+  layout: cf00,185x48,0,0,3
+  options: {}
+  panes:
+  - pane
+  start_directory: /home/bimmer
+  window_name: terms
+- layout: cf01,185x48,0,0,4
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  start_directory: /home/bimmer
+  window_name: nvim fzf
+- layout: cf02,185x48,0,0,5
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: newsboat
+  start_directory: /home/bimmer
+  window_name: newsboat
+- layout: cf03,185x48,0,0,6
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: neomutt
+  start_directory: /home/bimmer
+  window_name: neomutt

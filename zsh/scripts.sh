@@ -40,16 +40,16 @@ ftmuxp() {
     # get the IDs
     ID="$(ls $XDG_CONFIG_HOME/tmuxp | sed -e 's/\.yml$//')"
     if [[ -z "$ID" ]]; then
-        tmux new-session
+        tmuxp load chris
     fi
 
-    create_new_session="Create New Session"
+    create_new_session="Attach to or create last session"
 
     ID="${create_new_session}\n$ID"
     ID="$(echo $ID | fzf | cut -d: -f1)"
 
     if [[ "$ID" = "${create_new_session}" ]]; then
-        tmux new-session
+        tmuxp load chris
     elif [[ -n "$ID" ]]; then
         # Rename the current urxvt tab to session name
         printf '\033]777;tabbedx;set_tab_name;%s\007' "$ID"

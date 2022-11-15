@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#
 alias b="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias cat="bat"
 alias ll='lsd -lah'
@@ -80,6 +80,7 @@ alias cfpa='nvim -c ":vert ba" $HOME/ArchInstall/apps.csv $HOME/ArchInstall_book
 alias cfpd='nvim -c ":vert ba" $HOME/ArchInstall/apps.csv $HOME/ArchInstall_book/apps.csv'
 alias cfpd1='vimdiff $HOME/ArchInstall/apps.csv $HOME/ArchInstall_book1/apps.csv'
 alias cfu='nvim $HOME/.newsboat/urls'
+alias cft='nvim $HOME/.tmux.conf.local'
 alias play='mono $HOME/Downloads/StarTrek/StarTrek/Program.exe'
 #alias lf='ranger'
 alias ga='git add'
