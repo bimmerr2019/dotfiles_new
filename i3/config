@@ -294,7 +294,7 @@ for_window [class="URxvt*"] border pixel 1
 exec --no-startup-id urxvt
 exec --no-startup-id brave
 exec --no-startup-id signal-desktop
-exec --no-startup-id element-desktop
+#exec --no-startup-id element-desktop
 exec --no-startup-id zathura ~/Nextcloud/mouseless/building_mouseless_environment.pdf
 exec --no-startup-id nextcloud
 
@@ -309,7 +309,7 @@ attach-session -d -t scratchpad
 # htop scratchpad
 for_window [instance="htop_scratchpad"] move to scratchpad, border none
 bindsym $mod+Shift+p [instance="htop_scratchpad"] scratchpad show
-exec urxvtc -name htop_scratchpad -e htop
+exec urxvtc -name htop_scratchpad -e btop
 
 # i3bar
 # to change the bar font uncomment and place at top. then MOD+SHIFT+R

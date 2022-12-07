@@ -13,3 +13,4 @@ map J zoom out
 map i recolor
 map p print
 map g goto top
+set default-bg "rgba(255,255,255,0.3)"

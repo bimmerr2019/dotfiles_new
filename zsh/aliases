@@ -2,16 +2,16 @@
 #
 alias b="upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 alias cat="bat"
-alias ll='lsd -lah'
-alias l='lsd -lFh'     #size,show type,human readable
-alias la='lsd -lAFh'   #long list,show almost all,show type,human readable
-alias lr='lsd -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='lsd -ltFh'   #long list,sorted by date,show type,human readable
-#alias ll='lsd -l'      #long list
+alias ll='lsd   -lah'
+alias l='lsd    -lFh'     #size,show type,human readable
+alias la='lsd   -lAFh'   #long list,show almost all,show type,human readable
+alias lr='lsd   -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='lsd   -ltFh'   #long list,sorted by date,show type,human readable
+#alias ll='lsd  -l'      #long list
 alias ldot='lsd -ld .*'
-alias lS='lsd -1FSsh'
-alias lart='lsd -1Fcart'
-alias lrt='lsd -1Frt'
+alias lS='lsd   -1FSsh'
+alias lart='lsd -1Fart'
+alias lrt='lsd  -1Frt'
 alias vids='lsd -ltFh *.{mkv,mp4,webm}'
 
 alias grep='grep --color'
