@@ -131,4 +131,5 @@ alias wsl='nmcli dev wifi connect FTSESP-REMOTE-5G password "basicfinch431"'
 alias xp='xprop | grep WM_CLASS'
 #alias key1="gpg-connect-agent 18094806 learn --force /bye"
 #alias key2="gpg-connect-agent 18094693 learn --force /bye"
+alias chg_yubi='gpg-connect-agent "scd serialno" "learn --force" /bye'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
