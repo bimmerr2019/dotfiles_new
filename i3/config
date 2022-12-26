@@ -162,6 +162,7 @@ assign [class="Signal" instance="signal"] $ws3
 assign [class="Zathura" instance="org.pwmt.zathura"] $ws4
 assign [class="QTodoTxt2" instance="qtodotxt.pyw"] $ws7
 assign [class="whirlpool-gui" instance="whirlpool-gui"] $ws8
+assign [class="Proton Mail Bridge" instance="protonmail-bridge"] $ws0
 
 focus_follows_mouse no
 
@@ -297,6 +298,7 @@ exec --no-startup-id signal-desktop
 #exec --no-startup-id element-desktop
 exec --no-startup-id zathura ~/Nextcloud/mouseless/building_mouseless_environment.pdf
 exec --no-startup-id nextcloud
+exec --no-startup-id "protonmail-bridge,xkill"
 
 # Terminal scratchpad with tmux and three windows: 1. Terminal | 2.Neovim temp file
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border none

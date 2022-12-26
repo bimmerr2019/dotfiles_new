@@ -1,5 +1,7 @@
 fpath=($ZDOTDIR/external $fpath)
 
+export PATH=/home/bimmer/.local/bin:$PATH
+
 source "$XDG_CONFIG_HOME/zsh/aliases"
 
 setopt AUTO_PARAM_SLASH
