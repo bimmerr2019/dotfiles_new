@@ -5,8 +5,11 @@ export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 # For cached files
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export SUDO_EDITOR="/usr/bin/nvim"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
+
+export CLOUD="$HOME/Cloud"
 
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 

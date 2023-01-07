@@ -1,7 +1,10 @@
 xrdb -merge $HOME/.config/X11/.Xresources
 urxvtd -o -q -f
-xinput set-prop "Synaptics TM3625-010" "libinput Tapping Enabled" "1"
-xinput set-prop "Synaptics TM3625-010" "libinput Natural Scrolling Enabled" "1"
+# Put this stuff in /etc/X11/xorg.conf.d/70-synaptics.conf to tweak the 
+# touchpad Natural scrolling now is negative numbers on delta.
+#
+xinput set-prop "Synaptics TM3625-010" "libinput Accel Speed" "0.35"
+#xinput set-prop "Synaptics TM3625-010" "libinput Natural Scrolling Enabled" "1"
 xrandr --output eDP-1 --mode 1920x1080 --brightness 1.0
 amixer sset Master unmute
 amixer sset Speaker unmute

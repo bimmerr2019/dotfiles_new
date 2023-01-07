@@ -108,7 +108,7 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1:mutt"
+set $ws1 "1:tmux"
 set $ws2 "2: web"
 set $ws3 "3:msg"
 set $ws4 "4:pdf"
@@ -149,6 +149,9 @@ bindsym $mod+Shift+u resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+i resize shrink height 10 px or 10 ppt
 bindsym $mod+Shift+o resize grow width 10 px or 10 ppt
 
+# Play with more workspaces (Mod-n and Mod-N)
+bindsym $mod+n exec i3-input -F 'workspace 2%s' -P 'go to workspace: '
+bindsym $mod+Shift+n exec i3-input -F 'move container to workspace 2%s' -P 'move to workspace: '
 
 workspace_auto_back_and_forth yes
 
@@ -162,7 +165,8 @@ assign [class="Signal" instance="signal"] $ws3
 assign [class="Zathura" instance="org.pwmt.zathura"] $ws4
 assign [class="QTodoTxt2" instance="qtodotxt.pyw"] $ws7
 assign [class="whirlpool-gui" instance="whirlpool-gui"] $ws8
-assign [class="Proton Mail Bridge" instance="protonmail-bridge"] $ws0
+assign [class="Proton Mail Bridge" instance="protonmail-bridge"] $ws10
+assign [class="Logseq" instance="logseq"] $ws10
 
 focus_follows_mouse no
 
@@ -170,9 +174,11 @@ focus_follows_mouse no
 set $i3lockwall sh ~/.config/i3/scripts/lock.sh
 bindsym $mod+CTRL+Shift+l exec --no-startup-id $i3lockwall
 
+# MOD-INSERT to select (dmenu) and paste a bookmark at the cursor
 set $luke_cp sh ~/.config/i3/scripts/luke_cp.sh
 bindcode $mod+118 exec --no-startup-id $luke_cp
 
+# MOD-B to save the selection as a bookmark
 set $luke_paste sh ~/.config/i3/scripts/luke_paste.sh
 bindsym $mod+Shift+b exec --no-startup-id $luke_paste
 
@@ -288,7 +294,7 @@ client.focused 		#333333 $black2 $white2 #285577
 client.focused_inactive #333333 $background $foreground #484e50
 client.unfocused 	#333333 #222222 #888888 #292d2e #222222
 client.urgent 		$red1 $red1 $white2 $red1 $red1
-client.placeholder 	#000000 #0c0c0c $white2 #000000 0c0c0c
+client.placeholder 	#000000 #0c0c0c $white2 #000000 #0c0c0c
 
 for_window [class="URxvt*"] border pixel 1
 
@@ -296,9 +302,10 @@ exec --no-startup-id urxvt
 exec --no-startup-id brave
 exec --no-startup-id signal-desktop
 #exec --no-startup-id element-desktop
-exec --no-startup-id zathura ~/Nextcloud/mouseless/building_mouseless_environment.pdf
+exec --no-startup-id zathura $HOME/Nextcloud2/bimmer_docs/building_mouseless_environment.pdf
 exec --no-startup-id nextcloud
-exec --no-startup-id "protonmail-bridge,xkill"
+#exec --no-startup-id protonmail-bridge
+exec --no-startup-id $HOME/Downloads/Logseq-linux-x64-0.8.15.AppImage
 
 # Terminal scratchpad with tmux and three windows: 1. Terminal | 2.Neovim temp file
 for_window [instance="urxvt_scratchpad"] move to scratchpad, border none

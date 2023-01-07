@@ -1,0 +1,23 @@
+session_name: chris
+windows:
+- focus: 'true'
+  layout: ceff,185x48,0,0,2
+  options: {}
+  panes:
+  - pane
+  start_directory: /home/bimmer
+  window_name: terms
+- layout: aea0,79x22,0,0,3
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  start_directory: /home/bimmer
+  window_name: nvim fzf
+- layout: aea1,79x22,0,0,4
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/bimmer
+  window_name: newsboat

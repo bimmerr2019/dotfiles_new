@@ -1,4 +1,4 @@
-http://localhost:3001/StoneysGhoster/rss "tw" "~Stonewall Bitson"
+"http://localhost:3001/StoneysGhoster/rss" "tw" "~Stonewall Bitson"
 http://localhost:3001/beeforbacon1/rss "tw" "~BeeforBacon"
 http://localhost:3001/DrBitcoinMD/rss "tw" "~DrBitcoinMD"
 http://localhost:3001/BitcoinTina/rss "tw" "~Bitcoin Tina"
@@ -22,5 +22,3 @@ http://kunstler.com/feed/ clusterfuck nation
 http://localhost:3001/DylanLeClair_/rss "tw"
 http://localhost:3001/AmericanHodl8/rss "tw"
 http://localhost:3001/Beautyon_/rss "tw"
-http://localhost:3001/privacytoolsIO/rss "tw"
-http://localhost:3001/stkirsch/rss "tw"

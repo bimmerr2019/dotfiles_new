@@ -4,13 +4,22 @@ session_name: chris_play
 start_directory: $HOME
 
 windows:
-    - window_name: terms
+    - window_name: term
+      panes:
+          - focus: true
+    - window_name: terms_h
       layout: tiled
       panes:
           -
           -
-          -
-    - window_name: nvim fzf
-      layout: tiled
+    - window_name: terms_v
+      layout: main-vertical
       panes:
-          - nvim +FZF
+        - shell_command: 
+        - shell_command: ll
+    - window_name: newsboat
+      panes:
+          - newsboat -r
+    - window_name: neomutt
+      panes:
+          - neomutt

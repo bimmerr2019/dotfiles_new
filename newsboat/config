@@ -3,6 +3,10 @@ show-read-feeds yes
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
+#proxy-type socks5h
+#proxy localhost:{{3001}}
+#use-proxy yes
+
 confirm-mark-feed-read no
 
 bind-key j down
