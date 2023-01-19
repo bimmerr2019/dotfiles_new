@@ -108,6 +108,7 @@ alias h=history
 alias pop='cd ..'
 alias m='cd $CLOUD/Music'
 alias cdt='cd ~/Nextcloud2/bimmer_docs/computer_help'
+alias cda='cd ~/Nextcloud2/bimmer_docs/scripts'
 alias desk='cd ~/Desktop'
 alias d='dirs -v'
 alias specter='tmux new-session -d -s specter "exec $HOME/Spector_chris/Specter-1.10.5.AppImage"'
@@ -115,6 +116,8 @@ alias todo='tmux new-session -d -s todo "exec python $HOME/QTodoTxt2/bin/qtodotx
 alias log='tmux new-session -d -s logseq "exec $HOME/logseq/Logseq-linux-x64-0.8.15.AppImage"'
 alias whirl2='tmux new-session -d -s whirl "exec $CLOUD/Nextcloud_Helm/whirlpool-gui/whirlpool-gui-0.10.3.AppImage"'
 alias yubi='tmux new-session -d -s yubi "exec $CLOUD/Nextcloud_Helm/yubikey/yubioath-desktop-5.1.0-linux.AppImage"'
+#alias bisq='tmux new-session -d -s bisq "exec /opt/bisq/bin/Bisq -btcNodes=...6id.onion:8333 -useTorForBtc=true"'
+alias bisq='tmux new-session -d -s bisq "exec /opt/bisq/bin/Bisq -useTorForBtc=true"'
 #alias wasabi='cd $HOME/WalletWasabi/WalletWasabi.Gui; dotnet run'
 alias lv="nvim -c':e#<1'"
 alias wea="curl v2.wttr.in/Phoenix\?u"
@@ -136,8 +139,6 @@ alias cloud_remote='sshfs cloud_clear:/mnt/cloud /home/bimmer/Cloud'
 alias cloud_remote_tor='torsocks sshfs cloud_tor:/mnt/cloud /home/bimmer/Cloud'
 alias dc='umount /home/bimmer/Cloud'
 alias vid="mpv"
-#alias key1="gpg-connect-agent 18094806 learn --force /bye"
-#alias key2="gpg-connect-agent 18094693 learn --force /bye"
 alias chg_yubi='gpg-connect-agent "scd serialno" "learn --force" /bye'
 alias rbt_yubi='gpg-connect-agent updatestartuptty /bye >/dev/null'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index

@@ -116,8 +116,8 @@ set $ws5 "5:vm"
 set $ws6 "6:key"
 set $ws7 "7:todo"
 set $ws8 "8:wh"
-set $ws9 "9"
-set $ws10 "10"
+set $ws9 "9:bsq"
+set $ws10 "10:log"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -165,6 +165,7 @@ assign [class="Signal" instance="signal"] $ws3
 assign [class="Zathura" instance="org.pwmt.zathura"] $ws4
 assign [class="QTodoTxt2" instance="qtodotxt.pyw"] $ws7
 assign [class="whirlpool-gui" instance="whirlpool-gui"] $ws8
+assign [class="bisq.desktop.app.BisqApp" instance="bisq.desktop.app.BisqApp"] $ws9
 assign [class="Proton Mail Bridge" instance="protonmail-bridge"] $ws10
 assign [class="Logseq" instance="logseq"] $ws10
 
