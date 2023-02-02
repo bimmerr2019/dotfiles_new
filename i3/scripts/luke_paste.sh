@@ -1,7 +1,7 @@
 #!/bin/bash
 
 bookmark="$(xclip -o)"
-file="$HOME/Nextcloud2/snippets"
+file="$HOME/Nextcloud/snippets"
 
 if grep -q "^$bookmark$" "$file"; then
     notify-send "Oops " "Already bookmarked"

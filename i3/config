@@ -303,7 +303,7 @@ exec --no-startup-id urxvt
 exec --no-startup-id brave
 exec --no-startup-id signal-desktop
 #exec --no-startup-id element-desktop
-exec --no-startup-id zathura $HOME/Nextcloud2/bimmer_docs/building_mouseless_environment.pdf
+exec --no-startup-id zathura $HOME/Nextcloud/bimmer_docs/building_mouseless_environment.pdf
 exec --no-startup-id nextcloud
 #exec --no-startup-id protonmail-bridge
 exec --no-startup-id $HOME/Downloads/Logseq-linux-x64-0.8.15.AppImage

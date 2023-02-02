@@ -107,10 +107,11 @@ alias vim=nvim
 alias h=history
 alias pop='cd ..'
 alias m='cd $CLOUD/Music'
-alias cdt='cd ~/Nextcloud2/bimmer_docs/computer_help'
-alias cda='cd ~/Nextcloud2/bimmer_docs/scripts'
+alias cdt='cd ~/Nextcloud/bimmer_docs/computer_help'
+alias cda='cd ~/Nextcloud/bimmer_docs/scripts'
 alias desk='cd ~/Desktop'
 alias d='dirs -v'
+alias ted='sudo -u teddit /home/teddit/start_teddit.sh'
 alias specter='tmux new-session -d -s specter "exec $HOME/Spector_chris/Specter-1.10.5.AppImage"'
 alias todo='tmux new-session -d -s todo "exec python $HOME/QTodoTxt2/bin/qtodotxt.pyw"'
 alias log='tmux new-session -d -s logseq "exec $HOME/logseq/Logseq-linux-x64-0.8.15.AppImage"'
@@ -118,6 +119,7 @@ alias whirl2='tmux new-session -d -s whirl "exec $CLOUD/Nextcloud_Helm/whirlpool
 alias yubi='tmux new-session -d -s yubi "exec $CLOUD/Nextcloud_Helm/yubikey/yubioath-desktop-5.1.0-linux.AppImage"'
 #alias bisq='tmux new-session -d -s bisq "exec /opt/bisq/bin/Bisq -btcNodes=...6id.onion:8333 -useTorForBtc=true"'
 alias bisq='tmux new-session -d -s bisq "exec /opt/bisq/bin/Bisq -useTorForBtc=true"'
+alias pt='tmux new-session -d -s packet "exec /opt/pt/packettracer"'
 #alias wasabi='cd $HOME/WalletWasabi/WalletWasabi.Gui; dotnet run'
 alias lv="nvim -c':e#<1'"
 alias wea="curl v2.wttr.in/Phoenix\?u"
