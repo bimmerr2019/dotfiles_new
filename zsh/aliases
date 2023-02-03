@@ -14,6 +14,9 @@ alias lart='lsd -1Fart'
 alias lrt='lsd  -1Frt'
 alias vids='lsd -ltFh *.{mkv,mp4,webm}'
 
+alias search_books='{ IFS= read -r d &&  find ~/Cloud/textbooks -iname "*$d*" -print; } <<<'
+alias search_all='{ IFS= read -r d && sudo find / -iname "*$d*" -print; } <<<'
+
 alias sudo='sudo '
 alias grep='grep --color'
 alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
