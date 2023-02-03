@@ -175,6 +175,14 @@ focus_follows_mouse no
 set $i3lockwall sh ~/.config/i3/scripts/lock.sh
 bindsym $mod+CTRL+Shift+l exec --no-startup-id $i3lockwall
 
+# MOD-F9 to mount encrypted drive
+set $luke_mounter sh ~/.config/i3/scripts/mounter.sh
+bindcode $mod+224 exec --no-startup-id $luke_mounter
+
+# MOD-F10 to unmount encrypted drive
+set $luke_unmounter sh ~/.config/i3/scripts/unmounter.sh
+bindcode $mod+226 exec --no-startup-id $luke_unmounter
+
 # MOD-INSERT to select (dmenu) and paste a bookmark at the cursor
 set $luke_cp sh ~/.config/i3/scripts/luke_cp.sh
 bindcode $mod+118 exec --no-startup-id $luke_cp
