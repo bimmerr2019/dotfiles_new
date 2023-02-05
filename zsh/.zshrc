@@ -58,7 +58,7 @@ bindkey -r '^g'
 bindkey -s '^g' 'clear\n'
 
 # Refresh gpg-agent tty in case user switches into an X session
-gpg-connect-agent updatestartuptty /bye >/dev/null
+#gpg-connect-agent updatestartuptty /bye >/dev/null
 
 source $HOME/zsh_play/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=9'

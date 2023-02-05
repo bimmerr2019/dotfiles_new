@@ -66,10 +66,16 @@ vman() {
     fi
 }
 
+urlencode()
+{
+  local args="$@"
+  jq -nr --arg v "$args" '$v|@uri'; 
+}
+
 duckduckgo() {
-    lynx -vikeys -accept_all_cookies "https://lite.duckduckgo.com/lite/?q=$@"
+    lynx -vikeys -accept_all_cookies "https://lite.duckduckgo.com/lite/?q=$(urlencode "$@")"
 }
 
 wikipedia() {
-    lynx -vikeys -accept_all_cookies "https://en.wikipedia.org/wiki?search=$@"
+    lynx -vikeys -accept_all_cookies "https://en.wikipedia.org/wiki?search=$(urlencode "$@")"
 }

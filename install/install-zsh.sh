@@ -8,6 +8,7 @@ ln -sf "$DOTFILES/zsh/aliases" "$XDG_CONFIG_HOME/zsh/aliases"
 rm -rf "$XDG_CONFIG_HOME/zsh/external"
 ln -sf "$DOTFILES/zsh/external" "$XDG_CONFIG_HOME/zsh"
 
+mkdir -p "$XDG_DATA_HOME/gnupg"
 mkdir -p "$HOME/zsh_play"
 [ ! -d "$HOME/zsh_play/zsh-autosuggestions" ] \
 && git clone https://github.com/zsh-users/zsh-autosuggestions \
