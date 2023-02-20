@@ -40,6 +40,9 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
 
     " Man pages in Neovim
     Plug 'jez/vim-superman'
+    Plug 'farmergreg/vim-lastplace'
+    Plug 'ptzz/lf.vim'
+    Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 set clipboard+=unnamedplus
