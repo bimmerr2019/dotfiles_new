@@ -45,7 +45,7 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'voldikss/vim-floaterm'
 call plug#end()
 
-set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
 set splitbelow splitright
 set number relativenumber nowrap
 set spell spelllang=en_us
