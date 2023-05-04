@@ -1,6 +1,6 @@
 xrdb -merge $HOME/.config/X11/.Xresources
 urxvtd -o -q -f
-# Put this stuff in /etc/X11/xorg.conf.d/70-synaptics.conf to tweak the 
+# Put this stuff in /etc/X11/xorg.conf.d/30-synaptics.conf to tweak the 
 # touchpad Natural scrolling now is negative numbers on delta.
 #
 xinput set-prop "Synaptics TM3625-010" "libinput Accel Speed" "0.35"
