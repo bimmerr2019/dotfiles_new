@@ -156,7 +156,7 @@ bindsym $mod+Shift+n exec i3-input -F 'move container to workspace 2%s' -P 'move
 workspace_auto_back_and_forth yes
 
 # xprop | grep WM_CLASS
-assign [class="firefox" instance="Navigator"] $ws2
+assign [class="firefox" instance="Navigator"] $ws8
 assign [class="Brave-browser" instance="brave-browser"] $ws2
 assign [class="Yubico Authenticator" instance="yubioath-desktop"] $ws2
 assign [class="KeePassXC" instance="keepassxc"] $ws6
@@ -309,6 +309,7 @@ for_window [class="URxvt*"] border pixel 1
 
 exec --no-startup-id urxvt
 exec --no-startup-id brave
+exec --no-startup-id firefox
 exec --no-startup-id signal-desktop
 #exec --no-startup-id element-desktop
 exec --no-startup-id zathura $HOME/Nextcloud-public/bimmer_docs/building_mouseless_environment.pdf
