@@ -22,3 +22,7 @@ mkdir -p "$HOME/zsh_play"
 [ ! -d "$HOME/QTodoTxt2" ] \
 && git clone https://github.com/QTodoTxt/QTodoTxt2 \
 "$HOME/QTodoTxt2"
+mkdir -p "$HOME/Cloud"
+mkdir -p "$HOME/Movies"
+mkdir -p "$HOME/Sammy"
+rm -rf "$HOME/Download"
