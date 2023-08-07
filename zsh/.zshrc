@@ -52,7 +52,8 @@ fi
 
 ftmuxp
 
-# Clearing the shell is now done with CTRL+g
+# Clearing the shell is now done with CTRL+g, because tmux used CTRL+l 
+# for pane selection
 bindkey -r '^l'
 bindkey -r '^g'
 bindkey -s '^g' 'clear\n'

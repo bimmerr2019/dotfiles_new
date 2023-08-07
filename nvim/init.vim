@@ -4,7 +4,7 @@ call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'moll/vim-bbye'
     Plug 'simeji/winresizer'
-    Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
     Plug 'junegunn/limelight.vim'
 "    Plug 'itchyny/lightline.vim'
     Plug 'simnalamburt/vim-mundo'
@@ -136,7 +136,7 @@ augroup filetype_csv
 augroup END
 
 " Config for fzf.vim (BONUS :D)
-nnoremap <leader>f :Files<cr>
+nnoremap <leader>g :Files<cr>
 nnoremap <leader>h :History<cr>
 nnoremap <leader><space> :Rg<cr>
 nnoremap <c-w>h <c-w>s
