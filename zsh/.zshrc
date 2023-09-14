@@ -1,6 +1,7 @@
 fpath=($ZDOTDIR/external $fpath)
 
 export PATH=/home/bimmer/.local/bin:$PATH
+export PATH=/home/bimmer/go/bin:$PATH
 
 source "$XDG_CONFIG_HOME/zsh/aliases"
 
@@ -24,6 +25,7 @@ setopt PUSHD_SILENT
 
 bindkey -v
 export KEYTIMEOUT=1
+export LFS=/mnt/lfs
 
 autoload -Uz cursor_mode && cursor_mode
 

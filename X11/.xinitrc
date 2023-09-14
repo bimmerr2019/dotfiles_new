@@ -5,7 +5,9 @@ urxvtd -o -q -f
 #
 xinput set-prop "Synaptics TM3625-010" "libinput Accel Speed" "0.35"
 #xinput set-prop "Synaptics TM3625-010" "libinput Natural Scrolling Enabled" "1"
-xrandr --output eDP-1 --mode 1920x1080 --brightness 1.0
+xrandr --output eDP-1 --mode 1920x1080
+/usr/bin/backlight_control 200
+
 amixer sset Master unmute
 amixer sset Speaker unmute
 amixer sset Headphone unmute

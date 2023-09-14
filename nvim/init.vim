@@ -1,41 +1,37 @@
 " Plugins
 call plug#begin("$XDG_CONFIG_HOME/nvim/plugged")
-    Plug 'chrisbra/csv.vim'
-    Plug 'christoomey/vim-tmux-navigator'
     Plug 'moll/vim-bbye'
     Plug 'simeji/winresizer'
-    Plug 'junegunn/fzf.vim', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/limelight.vim'
-"    Plug 'itchyny/lightline.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'simnalamburt/vim-mundo'
-    Plug 'rust-lang/rust.vim'
-    Plug 'bluz71/vim-nightfly-guicolors'
-    Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
-    Plug 'PotatoesMaster/i3-vim-syntax'
+"    Plug 'bluz71/vim-nightfly-guicolors'
+"    Plug 'ap/vim-css-color' "Displays a preview of colors with CSS
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary' " (gc) keystroke to comment automatically
     " For coc.vim to work, you'll need nodejs and yarn (both available " in official repos).
     " Only bash-language-server is configured with coc.vim. See the file coc-settings.json.
     " To make it work, you need to install bash-language-server: `sudo pacman -S bash-language-server`
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'yaegassy/coc-nginx', {'do': 'yarn install " --frozen-lockfile'}
 
     " Collection of snippets
-    Plug 'honza/vim-snippets'
+    " Plug 'honza/vim-snippets'
 
     " Compiler and linter
-    Plug 'neomake/neomake'
+    " Plug 'neomake/neomake'
 
     " Theme gruvbox
     Plug 'morhetz/gruvbox'
-
+    Plug 'mhinz/vim-startify' " startify for startup cow
     " Status bar
 "    Plug 'itchyny/lightline.vim'
 
     "tmux
     Plug 'wellle/tmux-complete.vim'
     Plug 'tmux-plugins/vim-tmux'
-    Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'christoomey/vim-tmux-navigator'
 
     " Man pages in Neovim
@@ -54,10 +50,6 @@ set scrolloff=11
 " set background=dark
 
 au ColorScheme * hi Normal ctermbg=none guibg=none
-
-" added for rust plugin
-syntax enable
-filetype plugin indent on
 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -128,12 +120,12 @@ nnoremap <leader>bn :bn<cr> ;buffer next
 nnoremap <leader>tn gt ;new tab
 
 " Config for chrisbra/csv.vim
-augroup filetype_csv
-    autocmd! 
-
-    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
-    autocmd BufWritePre *.csv :%UnArrangeColumn
-augroup END
+"augroup filetype_csv
+"    autocmd! 
+"
+"    autocmd BufRead,BufWritePost *.csv :%ArrangeColumn!
+"    autocmd BufWritePre *.csv :%UnArrangeColumn
+"augroup END
 
 " Config for fzf.vim (BONUS :D)
 nnoremap <leader>g :Files<cr>
@@ -146,12 +138,9 @@ nnoremap <c-w>h <c-w>s
 "###########
 
 " Coc extensions (need to install yarn or npm, both available in official repo of Arch Linux)
-let g:coc_global_extensions = [
-            \ 'coc-snippets',
-            \ 'coc-css', 
-            \ 'coc-html',
-            \ 'coc-json', 
-            \]
+" let g:coc_global_extensions = [
+"            \ 'coc-snippets',
+"            \]
 
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -179,28 +168,28 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+"            \ pumvisible() ? "\<C-n>" :
+"            \ <SID>check_back_space() ? "\<TAB>" :
+"            \ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"function! s:check_back_space() abort
+"    let col = col('.') - 1
+"    return !col || getline('.')[col - 1]  =~# '\s'
+"endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
-else
-    inoremap <silent><expr> <c-@> coc#refresh()
-endif
+"if has('nvim')
+"    inoremap <silent><expr> <c-space> coc#refresh()
+"else
+"    inoremap <silent><expr> <c-@> coc#refresh()
+"endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "###########
 "# Neomake #
@@ -209,25 +198,25 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Needs to install shellcheck and vint: `sudo pacman -S shellcheck vint`
 
 " Neomake signs in the gutter
-let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {
-            \   'text': '',
-            \   'texthl': 'NeomakeWarningSign',
-            \ }
-let g:neomake_message_sign = {
-            \   'text': '',
-            \   'texthl': 'NeomakeWarningSign',
-            \ }
-let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-
-" update neomake when save file
-call neomake#configure#automake('w')
-
-command! -bang -nargs=* -complete=file Make NeomakeProject <args>
-
-" Enable linters
-let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_vim_enabled_makers = ['vint']
+" let g:neomake_error_sign = {'text': '', 'texthl': 'NeomakeErrorSign'}
+" let g:neomake_warning_sign = {
+"             \   'text': '',
+"             \   'texthl': 'NeomakeWarningSign',
+"             \ }
+" let g:neomake_message_sign = {
+"             \   'text': '',
+"             \   'texthl': 'NeomakeWarningSign',
+"             \ }
+" let g:neomake_info_sign = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+" 
+" " update neomake when save file
+" call neomake#configure#automake('w')
+" 
+" command! -bang -nargs=* -complete=file Make NeomakeProject <args>
+" 
+" " Enable linters
+" let g:neomake_sh_enabled_makers = ['shellcheck']
+" let g:neomake_vim_enabled_makers = ['vint']
 
 "###########
 "# Gruvbox #
@@ -258,3 +247,5 @@ highlight DiffText guibg=#654321
 " vim-airline customize
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+nnoremap <F5> :MundoToggle<CR>

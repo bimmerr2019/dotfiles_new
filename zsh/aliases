@@ -9,10 +9,12 @@ alias lr='lsd   -tRFh'   #sorted by date,recursive,show type,human readable
 alias lt='lsd   -ltFh'   #long list,sorted by date,show type,human readable
 #alias ll='lsd  -l'      #long list
 alias ldot='lsd -ld .*'
-alias lS='lsd   -1FSsh'
-alias lart='lsd -1Fart'
-alias lrt='lsd  -1Frt'
+alias lS='lsd   -lFSsh'
+alias lart='lsd -lFart'
+alias lrt='lsd  -lFrt'
 alias vids='lsd -ltFh *.{mkv,mp4,webm}'
+
+alias lfs='sudo /usr/sbin/chroot /mnt/lfs /usr/bin/env -i HOME=/root TERM="$TERM" PS1="\u:\w\\\\$ " PATH=/bin:/usr/bin:/sbin:/usr/sbin /bin/bash --login'
 
 alias search_books='{ IFS= read -r d &&  find ~/Nextcloud-private/textbooks -iname "*$d*" -print; } <<<'
 alias search_all='{ IFS= read -r d && sudo find / -iname "*$d*" -print; } <<<'
@@ -64,6 +66,8 @@ alias cfe='nvim $HOME/dotfiles/zsh/.zshenv'
 alias cfea='nvim -c ":vert ba" $HOME/dotfiles/zsh/.zshenv $HOME/dotfiles_book1/zsh/.zshenv $HOME/dotfiles_book/zsh/.zshenv'
 alias cfed='nvim -c ":vert ba" $HOME/dotfiles/zsh/.zshenv $HOME/dotfiles_book/zsh/.zshenv'
 alias cfed1='vimdiff $HOME/dotfiles/zsh/.zshenv $HOME/dotfiles_book1/zsh/.zshenv'
+alias cfl='nvim $HOME/.config/nvim/lua/custom/init.lua'
+alias cfpl='nvim $HOME/.config/nvim/lua/custom/plugins.lua'
 alias cfv='nvim $HOME/dotfiles/nvim/init.vim'
 alias cfva='nvim -c ":vert ba" $HOME/dotfiles/nvim/init.vim $HOME/dotfiles_book1/nvim/init.vim $HOME/dotfiles_book/nvim/init.vim'
 alias cfvd='nvim -c ":vert ba"  $HOME/dotfiles/nvim/init.vim $HOME/dotfiles_book/nvim/init.vim'

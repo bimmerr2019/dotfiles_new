@@ -112,12 +112,13 @@ set $ws1 "1:tmux"
 set $ws2 "2: web"
 set $ws3 "3:msg"
 set $ws4 "4:pdf"
-set $ws5 "5:vm"
+set $ws5 "5:ide"
 set $ws6 "6:key"
 set $ws7 "7:todo"
 set $ws8 "8:wh"
 set $ws9 "9:bsq"
 set $ws10 "10:log"
+set $ws21 "21:vm"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
