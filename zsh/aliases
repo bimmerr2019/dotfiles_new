@@ -177,3 +177,4 @@ alias dc='umount /home/bimmer/Cloud'
 alias vid="mpv"
 alias chg_yubi='gpg-connect-agent "scd serialno" "learn --force" /bye'
 alias rbt_yubi='gpg-connect-agent updatestartuptty /bye >/dev/null'
+alias sudo='sudo '
